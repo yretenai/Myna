@@ -1,0 +1,6 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Myna
+Upstream-Contact: Ada / Legiayayana <ada@chronovore.dev>
+Source: https://git.sr.ht/~chronovore/myna
+Source: https://github.com/yretenai/myna
+Files: "dotnet/*" "swift/*" "README.md"
