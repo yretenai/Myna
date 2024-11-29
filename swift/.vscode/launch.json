@@ -1,0 +1,22 @@
+{
+	"configurations": [
+		{
+			"type": "lldb",
+			"request": "launch",
+			"args": [],
+			"cwd": "${workspaceFolder:swift}",
+			"name": "Debug MynaBenchmarks",
+			"program": "${workspaceFolder:swift}/.build/debug/MynaBenchmarks",
+			"preLaunchTask": "swift: Build Debug MynaBenchmarks"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"args": [],
+			"cwd": "${workspaceFolder:swift}",
+			"name": "Release MynaBenchmarks",
+			"program": "${workspaceFolder:swift}/.build/release/MynaBenchmarks",
+			"preLaunchTask": "swift: Build Release MynaBenchmarks"
+		}
+	]
+}

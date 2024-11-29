@@ -11,6 +11,10 @@ let package = Package(
 			name: "Myna",
 			targets: ["Myna"]),
 	],
+	dependencies: [
+		.package(url: "https://github.com/ordo-one/package-benchmark", .upToNextMajor(from: "1.4.0")),
+		.package(url: "https://github.com/apple/swift-docc-plugin", from: "1.1.0"),
+	],
 	targets: [
 		// Targets are the basic building blocks of a package, defining a module or a test suite.
 		// Targets can depend on other targets in this package and products from dependencies.
@@ -19,6 +23,16 @@ let package = Package(
 		.testTarget(
 			name: "MynaTests",
 			dependencies: ["Myna"]
+		),
+		.executableTarget(
+			name: "MynaBenchmarks",
+			dependencies: [
+				.product(name: "Benchmark", package: "package-benchmark"),
+			],
+			path: "Benchmarks/MynaBenchmarks",
+			plugins: [
+				.plugin(name: "BenchmarkPlugin", package: "package-benchmark")
+			]
 		),
 	]
 )
