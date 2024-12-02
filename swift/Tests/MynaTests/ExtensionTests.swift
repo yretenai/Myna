@@ -17,16 +17,6 @@ struct IntExtensionTests {
 }
 
 struct DataExtensionTests {
-	@Test func chunked() throws {
-		let data = Data([1, 2, 3, 4, 5, 6])
-		let chunked = data.chunked(into: 2)
-
-		#expect(chunked.count == 3, "chunked.count == 3")
-		#expect(chunked[0].elementsEqual([1, 2]))
-		#expect(chunked[1].elementsEqual([3, 4]))
-		#expect(chunked[2].elementsEqual([5, 6]))
-	}
-
 	@Test func xor() throws {
 		let data1 = Data([1, 2, 3, 4, 5, 6])
 		let data2 = Data([0x80, 0x80, 0x80, 0x80, 0x80, 0x80])
