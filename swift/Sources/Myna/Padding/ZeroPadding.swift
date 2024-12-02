@@ -1,7 +1,7 @@
 import Foundation
 
 public struct ZeroPadding: PaddingTransform {
-	func unpad(data: Data) throws -> Data {
+	public func unpad(data: Data) throws -> Data {
 		let remain = data.reversed().count { value in
 			value == 0
 		}
@@ -17,7 +17,7 @@ public struct ZeroPadding: PaddingTransform {
 		return data[...(data.count - Int(remain) - 1)]
 	}
 
-	func pad(data: Data, into: Int) throws -> Data {
+	public func pad(data: Data, into: Int) throws -> Data {
 		var block = Data(capacity: into)
 		block.append(data)
 

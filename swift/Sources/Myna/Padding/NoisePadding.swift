@@ -1,11 +1,11 @@
 import Foundation
 
-struct NoisePadding: PaddingTransform {
-	func unpad(data: Data) throws -> Data {
+public struct NoisePadding: PaddingTransform {
+	public func unpad(data: Data) throws -> Data {
 		return data
 	}
 
-	func pad(data: Data, into: Int) throws -> Data {
+	public func pad(data: Data, into: Int) throws -> Data {
 		var block = Data(capacity: into)
 		block.append(data)
 

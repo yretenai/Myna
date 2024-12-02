@@ -1,4 +1,4 @@
-enum MynaError: Error {
+public enum MynaError: Error {
 	case systemError
 	case unsupportedPlatform
 	case unexpectedPadding

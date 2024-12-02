@@ -12,7 +12,6 @@ let package = Package(
 			targets: ["Myna"])
 	],
 	dependencies: [
-		.package(url: "https://github.com/ordo-one/package-benchmark", .upToNextMajor(from: "1.4.0")),
 		.package(url: "https://github.com/apple/swift-docc-plugin", from: "1.1.0"),
 		.package(url: "https://github.com/apple/swift-algorithms", from: "1.2.0"),
 	],
@@ -28,16 +27,6 @@ let package = Package(
 		.testTarget(
 			name: "MynaTests",
 			dependencies: ["Myna"]
-		),
-		.executableTarget(
-			name: "MynaBenchmarks",
-			dependencies: [
-				.product(name: "Benchmark", package: "package-benchmark")
-			],
-			path: "Benchmarks/MynaBenchmarks",
-			plugins: [
-				.plugin(name: "BenchmarkPlugin", package: "package-benchmark")
-			]
-		),
+		)
 	]
 )
