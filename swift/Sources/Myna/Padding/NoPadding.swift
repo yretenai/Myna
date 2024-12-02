@@ -1,6 +1,6 @@
 import Foundation
 
-struct NoPadding : PaddingTransform {
+struct NoPadding: PaddingTransform {
 	func unpad(data: Data) throws -> Data {
 		return data
 	}

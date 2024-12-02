@@ -1,6 +1,6 @@
 import Foundation
 
-struct NoisePadding : PaddingTransform {
+struct NoisePadding: PaddingTransform {
 	func unpad(data: Data) throws -> Data {
 		return data
 	}
@@ -8,7 +8,7 @@ struct NoisePadding : PaddingTransform {
 	func pad(data: Data, into: Int) throws -> Data {
 		var block = Data(capacity: into)
 		block.append(data)
-		
+
 		let remain = into - data.count
 		guard remain > 0 else {
 			throw MynaError.invalidInputLength

@@ -1,6 +1,6 @@
 import Foundation
 
-struct ANSIX923Padding : PaddingTransform {
+struct ANSIX923Padding: PaddingTransform {
 	func unpad(data: Data) throws -> Data {
 		if let remain = data.last {
 			guard remain != 0 else {
@@ -18,17 +18,17 @@ struct ANSIX923Padding : PaddingTransform {
 			if remain == data.count {
 				return Data()
 			}
-			
+
 			return data[...(data.count - Int(remain) - 1)]
 		}
-		
+
 		throw MynaError.unexpectedPadding
 	}
 
 	func pad(data: Data, into: Int) throws -> Data {
 		var block = Data(capacity: into)
 		block.append(data)
-		
+
 		let remain = into - data.count
 		guard remain > 0 else {
 			throw MynaError.invalidInputLength

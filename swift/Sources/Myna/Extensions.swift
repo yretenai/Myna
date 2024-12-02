@@ -1,6 +1,6 @@
 import Foundation
 
-internal extension Data {
+extension Data {
 	@inlinable
 	@inline(__always)
 	func xor(other: Data) -> Data {
@@ -8,7 +8,7 @@ internal extension Data {
 	}
 }
 
-internal extension Int {
+extension Int {
 	@inlinable
 	@inline(__always)
 	func align(into: Int) -> Int {

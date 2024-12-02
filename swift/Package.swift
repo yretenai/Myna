@@ -9,7 +9,7 @@ let package = Package(
 		// Products define the executables and libraries a package produces, making them visible to other packages.
 		.library(
 			name: "Myna",
-			targets: ["Myna"]),
+			targets: ["Myna"])
 	],
 	dependencies: [
 		.package(url: "https://github.com/ordo-one/package-benchmark", .upToNextMajor(from: "1.4.0")),
@@ -22,7 +22,7 @@ let package = Package(
 		.target(
 			name: "Myna",
 			dependencies: [
-				.product(name: "Algorithms", package: "swift-algorithms"),
+				.product(name: "Algorithms", package: "swift-algorithms")
 			]
 		),
 		.testTarget(
@@ -32,7 +32,7 @@ let package = Package(
 		.executableTarget(
 			name: "MynaBenchmarks",
 			dependencies: [
-				.product(name: "Benchmark", package: "package-benchmark"),
+				.product(name: "Benchmark", package: "package-benchmark")
 			],
 			path: "Benchmarks/MynaBenchmarks",
 			plugins: [

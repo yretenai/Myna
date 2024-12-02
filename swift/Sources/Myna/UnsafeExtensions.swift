@@ -1,13 +1,13 @@
 import Foundation
 
 #if os(macOS) || os(iOS)
-import Security
+	import Security
 #elseif canImport(Glibc)
-import Glibc
+	import Glibc
 #elseif canImport(Musl)
-import Musl
+	import Musl
 #elseif canImport(WinSDK)
-import WinSDK
+	import WinSDK
 #endif
 
 extension Data {
@@ -25,13 +25,13 @@ extension Data {
 			let unsafePointer = unsafeMutablePointer.assumingMemoryBound(to: UInt8.self)
 
 			#if os(macOS) || os(iOS)
-			return SecRandomCopyBytes(kSecRandomDefault, count, unsafePointer) == errSecSuccess
+				return SecRandomCopyBytes(kSecRandomDefault, count, unsafePointer) == errSecSuccess
 			#elseif canImport(Glibc) || canImport(Musl)
-			return getentropy(unsafePointer, count) == 0
+				return getentropy(unsafePointer, count) == 0
 			#elseif canImport(WinSDK)
-			return BCryptGenRandom(nil, unsafePointer, count, BCRYPT_USE_SYSTEM_PREFERRED_RNG) == 0
+				return BCryptGenRandom(nil, unsafePointer, count, BCRYPT_USE_SYSTEM_PREFERRED_RNG) == 0
 			#else
-			throw MynaError.unsupportedPlatform
+				throw MynaError.unsupportedPlatform
 			#endif
 		}
 
