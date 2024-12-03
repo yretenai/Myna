@@ -4,7 +4,7 @@ import Foundation
 ///
 /// Zero-padding appends zeros to data to ensure it fits into a specific block size
 /// and removes trailing zeros during unpadding.
-public struct ZeroPadding: PaddingTransform {
+public struct ZeroPadding: PaddingScheme {
 	public func unpad(data: Data) throws -> Data {
 		let remain = data.reversed().count { value in
 			value == 0

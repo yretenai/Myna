@@ -1,7 +1,7 @@
 import Foundation
 
 /// A padding implementation that does nothing.
-public struct NoPadding: PaddingTransform {
+public struct NoPadding: PaddingScheme {
 	public func unpad(data: Data) -> Data {
 		return data
 	}

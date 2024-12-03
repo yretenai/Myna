@@ -6,9 +6,9 @@ import Foundation
 /// - Note: This transform is considered cryptographically unsafe.
 public struct ECBTransform: BlockTransform {
 	private let algorithm: SymmetricAlgorithm
-	private let padding: PaddingTransform
+	private let padding: PaddingScheme
 
-	init(algorithm: SymmetricAlgorithm, paddingMode: PaddingTransform?) {
+	init(algorithm: SymmetricAlgorithm, paddingMode: PaddingScheme?) {
 		self.algorithm = algorithm
 		self.padding = paddingMode ?? PKCS7Padding()
 	}

@@ -4,7 +4,7 @@ import Foundation
 ///
 /// ISO10126 fills the remaining bytes with random noise, sets the final
 /// byte to the number of padding bytes added.
-public struct ISO10126Padding: PaddingTransform {
+public struct ISO10126Padding: PaddingScheme {
 	public func unpad(data: Data) throws -> Data {
 		if let remain = data.last {
 			guard remain != 0 else {

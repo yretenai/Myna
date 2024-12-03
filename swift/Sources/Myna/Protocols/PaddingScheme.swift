@@ -1,7 +1,7 @@
 import Foundation
 
 /// Methods for data padding and unpadding.
-public protocol PaddingTransform {
+public protocol PaddingScheme {
 	/// Removes padding bytes from the given data.
 	///
 	/// - Parameter data: The padded `Data` object to be unpadded.
