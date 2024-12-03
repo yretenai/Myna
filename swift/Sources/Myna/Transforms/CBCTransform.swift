@@ -6,12 +6,10 @@ public struct CBCTransform: BlockCipherTransform {
 	private let algorithm: BlockCipher
 	private let padding: PaddingScheme
 	private var previousBlock: Data
-	private let iv: Data
 
 	init(algorithm: BlockCipher, iv: Data?, paddingMode: PaddingScheme?) {
 		self.algorithm = algorithm
-		self.iv = iv ?? Data(count: self.algorithm.blockSize)
-		self.previousBlock = self.iv
+		self.previousBlock = iv ?? Data(count: self.algorithm.blockSize)
 		self.padding = paddingMode ?? PKCS7Padding()
 	}
 
@@ -41,9 +39,6 @@ public struct CBCTransform: BlockCipherTransform {
 
 		result.append(try self.algorithm.encrypt(block: finalBlock.xor(other: previousBlock)))
 
-		// reset IV
-		previousBlock = iv
-
 		return result
 	}
 
@@ -66,9 +61,6 @@ public struct CBCTransform: BlockCipherTransform {
 
 		let finalBlock = try self.algorithm.decrypt(block: blocks.last!).xor(other: previousBlock)
 		result.append(try padding.unpad(data: finalBlock))
-
-		// reset IV
-		previousBlock = iv
 
 		return result
 	}
