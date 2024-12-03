@@ -1,7 +1,7 @@
 import Foundation
 
 /// Methods required for a symmetric encryption algorithm.
-public protocol SymmetricAlgorithm {
+public protocol BlockCipher {
 	/// The block size in bytes that the algorithm operates on.
 	var blockSize: Int { get }
 

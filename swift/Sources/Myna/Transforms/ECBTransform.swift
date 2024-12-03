@@ -5,10 +5,10 @@ import Foundation
 ///
 /// - Note: This transform is considered cryptographically unsafe.
 public struct ECBTransform: BlockCipherTransform {
-	private let algorithm: SymmetricAlgorithm
+	private let algorithm: BlockCipher
 	private let padding: PaddingScheme
 
-	init(algorithm: SymmetricAlgorithm, paddingMode: PaddingScheme?) {
+	init(algorithm: BlockCipher, paddingMode: PaddingScheme?) {
 		self.algorithm = algorithm
 		self.padding = paddingMode ?? PKCS7Padding()
 	}

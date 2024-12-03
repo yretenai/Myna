@@ -3,12 +3,12 @@ import Foundation
 
 /// A block transformation implementation for the Cipher Block Chaining (CBC) mode of operation.
 public struct CBCTransform: BlockCipherTransform {
-	private let algorithm: SymmetricAlgorithm
+	private let algorithm: BlockCipher
 	private let padding: PaddingScheme
 	private var previousBlock: Data
 	private let iv: Data
 
-	init(algorithm: SymmetricAlgorithm, iv: Data?, paddingMode: PaddingScheme?) {
+	init(algorithm: BlockCipher, iv: Data?, paddingMode: PaddingScheme?) {
 		self.algorithm = algorithm
 		self.iv = iv ?? Data(count: self.algorithm.blockSize)
 		self.previousBlock = self.iv
