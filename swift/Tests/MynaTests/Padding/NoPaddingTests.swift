@@ -14,7 +14,7 @@ struct NoPaddingTests {
 	@Test func unpad() async throws {
 		let data: Data = Data([0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff])
 		let padding = NoPadding()
-		let unpadded = try padding.unpad(data: data)
+		let unpadded = padding.unpad(data: data)
 		#expect(unpadded.elementsEqual(data))
 	}
 
@@ -28,7 +28,7 @@ struct NoPaddingTests {
 	@Test func unpadEmpty() async throws {
 		let data: Data = Data()
 		let padding = NoPadding()
-		let unpadded = try padding.unpad(data: data)
+		let unpadded = padding.unpad(data: data)
 		#expect(unpadded.elementsEqual(data))
 	}
 
