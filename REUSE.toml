@@ -1,0 +1,5 @@
+version = 1
+SPDX-PackageName = "Myna"
+SPDX-PackageSupplier = "Legiayayana <ada@chronovore.dev>"
+SPDX-PackageDownloadLocation = ["https://git.sr.ht/~chronovore/myna", "https://github.com/yretenai/myna"]
+annotations = []
