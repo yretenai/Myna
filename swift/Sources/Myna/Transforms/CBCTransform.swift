@@ -9,8 +9,8 @@ public struct CBCTransform: BlockCipherTransform {
 
 	init(algorithm: BlockCipher, iv: Data?, paddingMode: PaddingScheme?) {
 		self.algorithm = algorithm
-		self.previousBlock = iv ?? Data(count: self.algorithm.blockSize)
-		self.padding = paddingMode ?? PKCS7Padding()
+		previousBlock = iv ?? Data(count: algorithm.blockSize)
+		padding = paddingMode ?? PKCS7Padding()
 	}
 
 	public mutating func encrypt(data: Data) throws -> Data {
@@ -33,11 +33,11 @@ public struct CBCTransform: BlockCipherTransform {
 		}
 
 		for block in blocks {
-			self.previousBlock = try self.algorithm.encrypt(block: block.xor(other: previousBlock))
+			previousBlock = try algorithm.encrypt(block: block.xor(other: previousBlock))
 			result.append(previousBlock)
 		}
 
-		result.append(try self.algorithm.encrypt(block: finalBlock.xor(other: previousBlock)))
+		result.append(try algorithm.encrypt(block: finalBlock.xor(other: previousBlock)))
 
 		return result
 	}
@@ -55,11 +55,11 @@ public struct CBCTransform: BlockCipherTransform {
 		let blocks = data.chunks(ofCount: algorithm.blockSize)
 
 		for block in blocks.dropLast() {
-			previousBlock = try self.algorithm.decrypt(block: block).xor(other: previousBlock)
+			previousBlock = try algorithm.decrypt(block: block).xor(other: previousBlock)
 			result.append(previousBlock)
 		}
 
-		let finalBlock = try self.algorithm.decrypt(block: blocks.last!).xor(other: previousBlock)
+		let finalBlock = try algorithm.decrypt(block: blocks.last!).xor(other: previousBlock)
 		result.append(try padding.unpad(data: finalBlock))
 
 		return result

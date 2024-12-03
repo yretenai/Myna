@@ -10,7 +10,7 @@ public struct ECBTransform: BlockCipherTransform {
 
 	init(algorithm: BlockCipher, paddingMode: PaddingScheme?) {
 		self.algorithm = algorithm
-		self.padding = paddingMode ?? PKCS7Padding()
+		padding = paddingMode ?? PKCS7Padding()
 	}
 
 	public func encrypt(data: Data) throws -> Data {
@@ -33,10 +33,10 @@ public struct ECBTransform: BlockCipherTransform {
 		}
 
 		for block in blocks {
-			result.append(try self.algorithm.encrypt(block: block))
+			result.append(try algorithm.encrypt(block: block))
 		}
 
-		result.append(try self.algorithm.encrypt(block: finalBlock))
+		result.append(try algorithm.encrypt(block: finalBlock))
 
 		return result
 	}
@@ -54,10 +54,10 @@ public struct ECBTransform: BlockCipherTransform {
 		let blocks = data.chunks(ofCount: algorithm.blockSize)
 
 		for block in blocks.dropLast() {
-			result.append(try self.algorithm.decrypt(block: block))
+			result.append(try algorithm.decrypt(block: block))
 		}
 
-		let finalBlock = try self.algorithm.decrypt(block: blocks.last!)
+		let finalBlock = try algorithm.decrypt(block: blocks.last!)
 		result.append(try padding.unpad(data: finalBlock))
 		return result
 	}
