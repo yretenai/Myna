@@ -8,7 +8,7 @@ public protocol BlockTransform {
 	/// - Throws: `MynaError.invalidInputLength` if the input data or padding is invalid.
 	/// - Rethrows: Any error thrown by the underlying `SymmetricAlgorithm` or `PaddingTransform`.
 	/// - Returns: The encrypted `Data` object.
-	func encrypt(data: Data) throws -> Data
+	mutating func encrypt(data: Data) throws -> Data
 
 	/// Decrypts the given data.
 	///
@@ -16,5 +16,5 @@ public protocol BlockTransform {
 	/// - Throws: `MynaError.invalidInputLength` if the input data size is not a multiple of the block size.
 	/// - Rethrows: Any error thrown by the underlying `SymmetricAlgorithm` or `PaddingTransform`.
 	/// - Returns: The decrypted `Data` object.
-	func decrypt(data: Data) throws -> Data
+	mutating func decrypt(data: Data) throws -> Data
 }
