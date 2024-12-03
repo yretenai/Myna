@@ -4,7 +4,7 @@ import Foundation
 /// A block transformation implementation for the Electronic Code Book (ECB) mode of operation.
 ///
 /// - Note: This transform is considered cryptographically unsafe.
-public struct ECBTransform: BlockTransform {
+public struct ECBTransform: BlockCipherTransform {
 	private let algorithm: SymmetricAlgorithm
 	private let padding: PaddingScheme
 

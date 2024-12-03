@@ -1,7 +1,7 @@
 import Foundation
 
 /// Methods required for transforming data using a block-based transform.
-public protocol BlockTransform {
+public protocol BlockCipherTransform {
 	/// Encrypts the given data.
 	///
 	/// - Parameter data: The `Data` object to be encrypted. This may be larger than a single block.

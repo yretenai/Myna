@@ -2,7 +2,7 @@ import Algorithms
 import Foundation
 
 /// A block transformation implementation for the Cipher Block Chaining (CBC) mode of operation.
-public struct CBCTransform: BlockTransform {
+public struct CBCTransform: BlockCipherTransform {
 	private let algorithm: SymmetricAlgorithm
 	private let padding: PaddingScheme
 	private var previousBlock: Data
