@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2024 Legiayayana <ada@chronovore.dev>
+// SPDX-License-Identifier: EUPL-1.2
+
 import Foundation
 
 /// A padding implementation that conforms to the ANSI-X923 standard.
