@@ -1,5 +1,9 @@
 import Foundation
 
+/// A padding implementation that conforms to the ANSI-X923 standard.
+///
+/// ANSIX923 fills the remaining bytes with zero'd bytes, sets the final
+/// byte to the number of padding bytes added.
 public struct ANSIX923Padding: PaddingTransform {
 	public func unpad(data: Data) throws -> Data {
 		if let remain = data.last {

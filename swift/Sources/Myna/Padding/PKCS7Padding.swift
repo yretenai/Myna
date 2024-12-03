@@ -1,5 +1,8 @@
 import Foundation
 
+/// A padding implementation that conforms to the PKCS#7 standard.
+///
+/// PKCS7 fills the remaining bytes with the total amount of bytes added.
 public struct PKCS7Padding: PaddingTransform {
 	public func unpad(data: Data) throws -> Data {
 		if let finalRemain = data.last {

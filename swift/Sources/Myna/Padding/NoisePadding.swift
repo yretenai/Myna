@@ -1,5 +1,9 @@
 import Foundation
 
+/// A padding implementation that uses random noise bytes as padding.
+///
+/// Noise padding appends random to data to ensure it fits into a specific block size.
+/// - Note: This transform cannot unpad data.
 public struct NoisePadding: PaddingTransform {
 	public func unpad(data: Data) throws -> Data {
 		return data

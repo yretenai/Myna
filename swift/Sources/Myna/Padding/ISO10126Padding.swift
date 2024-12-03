@@ -1,5 +1,9 @@
 import Foundation
 
+/// A padding implementation that conforms to the ISO-10126 standard.
+///
+/// ISO10126 fills the remaining bytes with random noise, sets the final
+/// byte to the number of padding bytes added.
 public struct ISO10126Padding: PaddingTransform {
 	public func unpad(data: Data) throws -> Data {
 		if let remain = data.last {
