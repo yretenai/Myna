@@ -20,7 +20,7 @@ public struct CBCTransform: BlockCipherTransform {
 
 		var result = Data(capacity: data.count.align(into: algorithm.blockSize))
 		var blocks = data.chunks(ofCount: algorithm.blockSize)[...]  // cast to slice.
-		var finalBlock: Data
+		let finalBlock: Data
 		if data.count % algorithm.blockSize == 0 {
 			finalBlock = try padding.pad(data: Data(), into: algorithm.blockSize)
 		} else {
